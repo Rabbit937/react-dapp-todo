@@ -1,29 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
+import './index.css'
 
 import '@rainbow-me/rainbowkit/styles.css'
 
-import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit'
+import { darkTheme, lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit'
 import { WagmiProvider } from 'wagmi'
-import {
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  sepolia,
-  hardhat,
-  localhost
-} from 'wagmi/chains'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-
-
-const config = getDefaultConfig({
-  appName: "react-dapp-demo",
-  projectId: 'a7e8d0307cb18abe347dd1636c9a2bc1',
-  chains: [mainnet, polygon, optimism, arbitrum, base, sepolia, localhost, hardhat],
-})
+import { config } from './config/index.ts'
 
 const queryClient = new QueryClient()
 
@@ -31,7 +16,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
+        <RainbowKitProvider appInfo={{
+          appName: "@懒人码农",
+          learnMoreUrl: 'https://54web3.cc'
+        }} coolMode showRecentTransactions={true} theme={{
+          lightMode: lightTheme(),
+          darkMode: darkTheme(),
+        }}>
           <App />
         </RainbowKitProvider>
       </QueryClientProvider>

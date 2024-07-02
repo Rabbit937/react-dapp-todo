@@ -1,13 +1,16 @@
-import { Button } from "antd"
-
+import './App.css'
+import { useAccount } from 'wagmi'
 import Header from "./components/Header"
+import Todo from './components/Todo'
 
 function App() {
+  const { isConnected } = useAccount();
+  console.log('isConnected', isConnected)
 
   return (
     <div className="App">
       <Header />
-      <Button type="primary">查询余额</Button>
+      <Todo />
     </div>
   )
 }

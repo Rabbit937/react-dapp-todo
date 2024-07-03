@@ -1,11 +1,9 @@
-// ignition/modules/TodoContract.ts
-
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
 const TodoContractModule = buildModule("TodoContractModule", (m) => {
-    const todoContract = m.contract("TodoContract");
+  const todoContract = m.contract("TodoContract");
 
-    return { todoContract };
+  return { todoContract };
 });
 
 export default TodoContractModule;
